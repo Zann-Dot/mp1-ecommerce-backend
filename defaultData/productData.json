@@ -1,0 +1,325 @@
+[
+  {
+    "productName": "Men Premium Jacket Quilted Hooded Winter Jackets for Men & Boys Full Sleeves",
+    "imageUrl": "https://m.media-amazon.com/images/I/61PZorcxvgL._SX342_.jpg",
+    "ratings": 45,
+    "priceRupees": 2499,
+    "isDiscount": true,
+    "discount": 20,
+    "isReturnable": true,
+    "isPayOnDelivery": true,
+    "isFreeDelivery": true,
+    "description": [
+      "Made from high-quality polyester blend for maximum durability.",
+      "Style redefined with a modern, sleek quilted pattern.",
+      "All weather ready to keep you warm during harsh winters.",
+      "Unmatched comfort with a soft inner lining.",
+      "Versatile enough for both casual outings and outdoor adventures.",
+      "Travel friendly and lightweight for easy packing."
+    ]
+  },
+  {
+    "productName": "Women's Elegant Trench Coat Classic Double Breasted with Belt",
+    "imageUrl": "https://images.unsplash.com/photo-1539533113208-f6df8cc8b543?w=500&q=80",
+    "ratings": 50,
+    "priceRupees": 3299,
+    "isDiscount": false,
+    "discount": 0,
+    "isReturnable": true,
+    "isPayOnDelivery": true,
+    "isFreeDelivery": true,
+    "description": [
+      "Crafted from premium cotton twill fabric.",
+      "Style redefined with a timeless double-breasted design.",
+      "All weather ready, providing excellent wind and light rain protection.",
+      "Designed for superior comfort and a flattering fit.",
+      "Versatile for formal events or elevating everyday wear.",
+      "Travel friendly, resisting wrinkles on the go."
+    ]
+  },
+  {
+    "productName": "Unisex Classic Denim Jacket Vintage Wash Button Down",
+    "imageUrl": "https://images.unsplash.com/photo-1576871337622-98d48d1cf531?w=500&q=80",
+    "ratings": 40,
+    "priceRupees": 1899,
+    "isDiscount": true,
+    "discount": 15,
+    "isReturnable": true,
+    "isPayOnDelivery": false,
+    "isFreeDelivery": true,
+    "description": [
+      "Constructed from 100% heavy-duty denim.",
+      "Style redefined with a classic vintage wash.",
+      "All weather ready for layering in any season.",
+      "Breathable material ensures all-day comfort.",
+      "Extremely versatile, pairing effortlessly with any outfit.",
+      "Travel friendly and ruggedly durable."
+    ]
+  },
+  {
+    "productName": "Men's Activewear Running Shorts Quick Dry Lightweight",
+    "imageUrl": "https://m.media-amazon.com/images/I/71sr0QQCRAL._AC_UY1100_.jpg",
+    "ratings": 40,
+    "priceRupees": 899,
+    "isDiscount": true,
+    "discount": 10,
+    "isReturnable": false,
+    "isPayOnDelivery": true,
+    "isFreeDelivery": false,
+    "description": [
+      "Engineered with advanced moisture-wicking synthetic fabric.",
+      "Style redefined for the modern athlete.",
+      "All weather ready, keeping you cool during intense workouts.",
+      "Ultimate comfort with a flexible, elastic waistband.",
+      "Versatile for running, gym sessions, or lounging.",
+      "Travel friendly, taking up minimal space in your bag."
+    ]
+  },
+  {
+    "productName": "Women's High-Waist Yoga Leggings Seamless Stretch",
+    "imageUrl": "https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=500&q=80",
+    "ratings": 42,
+    "priceRupees": 1299,
+    "isDiscount": false,
+    "discount": 0,
+    "isReturnable": true,
+    "isPayOnDelivery": true,
+    "isFreeDelivery": true,
+    "description": [
+      "Made from a premium blend of spandex and nylon.",
+      "Style redefined with a flattering high-waist silhouette.",
+      "All weather ready, offering breathable warmth.",
+      "Incredible comfort with four-way stretch technology.",
+      "Versatile for yoga, pilates, or casual street wear.",
+      "Travel friendly and quick to dry."
+    ]
+  },
+  {
+    "productName": "Men's Casual Plaid Flannel Shirt Long Sleeve",
+    "imageUrl": "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=500&q=80",
+    "ratings": 37,
+    "priceRupees": 1499,
+    "isDiscount": true,
+    "discount": 25,
+    "isReturnable": true,
+    "isPayOnDelivery": true,
+    "isFreeDelivery": false,
+    "description": [
+      "Woven from ultra-soft, brushed cotton flannel.",
+      "Style redefined with a classic plaid pattern.",
+      "All weather ready, perfect as a mid-layer or standalone shirt.",
+      "Exceptional comfort for everyday wear.",
+      "Versatile enough for a weekend cabin trip or casual Friday.",
+      "Travel friendly and easy to maintain."
+    ]
+  },
+  {
+    "productName": "Women's Chunky Knit Oversized Sweater Turtleneck",
+    "imageUrl": "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=500&q=80",
+    "ratings": 41,
+    "priceRupees": 2199,
+    "isDiscount": true,
+    "discount": 30,
+    "isReturnable": true,
+    "isPayOnDelivery": false,
+    "isFreeDelivery": true,
+    "description": [
+      "Knitted from luxurious, thick acrylic yarn.",
+      "Style redefined with a cozy, oversized fit.",
+      "All weather ready to keep the winter chill at bay.",
+      "Cloud-like comfort that you won't want to take off.",
+      "Versatile pairing with jeans, leggings, or skirts.",
+      "Travel friendly, providing warmth without the weight."
+    ]
+  },
+  {
+    "productName": "Unisex Water-Resistant Hiking Backpack 40L",
+    "imageUrl": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&q=80",
+    "ratings": 40,
+    "priceRupees": 3499,
+    "isDiscount": false,
+    "discount": 0,
+    "isReturnable": true,
+    "isPayOnDelivery": true,
+    "isFreeDelivery": true,
+    "description": [
+      "Constructed with ripstop, water-resistant nylon.",
+      "Style redefined for the modern explorer.",
+      "All weather ready to protect your gear from the elements.",
+      "Ergonomic comfort with padded shoulder straps and back panel.",
+      "Versatile for hiking, camping, or backpacking trips.",
+      "The ultimate travel friendly companion with multiple compartments."
+    ]
+  },
+  {
+    "productName": "Men's Formal Oxford Shoes Genuine Leather",
+    "imageUrl": "https://image.made-in-china.com/202f0j00AGieutWIYzob/Stylish-Leather-Shoes-Pure-Genuine-Leather-Handmade-Formal-Classic-Men-s-Dress-Shoe.webp",
+    "ratings": 39,
+    "priceRupees": 4599,
+    "isDiscount": true,
+    "discount": 15,
+    "isReturnable": true,
+    "isPayOnDelivery": true,
+    "isFreeDelivery": true,
+    "description": [
+      "Handcrafted from 100% genuine full-grain leather.",
+      "Style redefined with a sleek, polished finish.",
+      "All weather ready with a durable, slip-resistant sole.",
+      "Cushioned insole provides all-day comfort for the office.",
+      "Versatile for business meetings, weddings, and formal events.",
+      "Travel friendly, easy to polish and maintain on the road."
+    ]
+  },
+  {
+    "productName": "Women's Lightweight Summer Maxi Dress Floral Print",
+    "imageUrl": "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=500&q=80",
+    "ratings": 40,
+    "priceRupees": 1799,
+    "isDiscount": true,
+    "discount": 20,
+    "isReturnable": true,
+    "isPayOnDelivery": false,
+    "isFreeDelivery": false,
+    "description": [
+      "Made from breathable, lightweight chiffon.",
+      "Style redefined with a vibrant, eye-catching floral print.",
+      "All weather ready for hot summer days and warm evenings.",
+      "Flowy and relaxed for maximum comfort.",
+      "Versatile for beach vacations, brunches, or garden parties.",
+      "Travel friendly, rolls up easily and resists severe wrinkling."
+    ]
+  },
+  {
+    "productName": "Unisex Beanie Hat Thick Ribbed Knit Winter Cap",
+    "imageUrl": "https://images.unsplash.com/photo-1576871337632-b9aef4c17ab9?w=500&q=80",
+    "ratings": 45,
+    "priceRupees": 499,
+    "isDiscount": false,
+    "discount": 0,
+    "isReturnable": false,
+    "isPayOnDelivery": true,
+    "isFreeDelivery": false,
+    "description": [
+      "Spun from a soft, insulating wool blend.",
+      "Style redefined with a minimalist ribbed texture.",
+      "All weather ready, providing essential head warmth in the cold.",
+      "Snug yet stretchy comfort fits all head sizes.",
+      "Versatile accessory for any winter outfit.",
+      "Travel friendly, easily stuffs into your pocket."
+    ]
+  },
+  {
+    "productName": "Men's Slim Fit Chino Pants Stretch Cotton",
+    "imageUrl": "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=500&q=80",
+    "ratings": 50,
+    "priceRupees": 1999,
+    "isDiscount": true,
+    "discount": 10,
+    "isReturnable": true,
+    "isPayOnDelivery": true,
+    "isFreeDelivery": true,
+    "description": [
+      "Tailored from a premium cotton-elastane blend.",
+      "Style redefined with a sharp, modern slim fit.",
+      "All weather ready for year-round wearability.",
+      "Unrestricted comfort with built-in stretch.",
+      "Extremely versatile, transitioning easily from work to weekend.",
+      "Travel friendly and retains shape well."
+    ]
+  },
+  {
+    "productName": "Women's Crossbody Bag Vegan Leather Vintage Satchel",
+    "imageUrl": "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=500&q=80",
+    "ratings": 49,
+    "priceRupees": 2599,
+    "isDiscount": true,
+    "discount": 40,
+    "isReturnable": true,
+    "isPayOnDelivery": true,
+    "isFreeDelivery": true,
+    "description": [
+      "Crafted from high-quality, sustainable vegan leather.",
+      "Style redefined with chic vintage-inspired brass hardware.",
+      "All weather ready, water-resistant exterior protects your belongings.",
+      "Comfortable to wear with an adjustable shoulder strap.",
+      "Versatile for daily commutes, shopping, or nights out.",
+      "Travel friendly, compact yet spacious enough for essentials."
+    ]
+  },
+  {
+    "productName": "Unisex Polarized Sunglasses Retro Round Frame",
+    "imageUrl": "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=500&q=80",
+    "ratings": 45,
+    "priceRupees": 1299,
+    "isDiscount": false,
+    "discount": 0,
+    "isReturnable": true,
+    "isPayOnDelivery": false,
+    "isFreeDelivery": true,
+    "description": [
+      "Featuring impact-resistant polycarbonate lenses and a metal frame.",
+      "Style redefined with a classic retro aesthetic.",
+      "All weather ready, offering 100% UV protection on sunny or cloudy days.",
+      "Lightweight comfort for all-day wear.",
+      "Versatile design suits various face shapes and styles.",
+      "Travel friendly, comes with a protective hard case."
+    ]
+  },
+  {
+    "productName": "Men's Graphic Printed T-Shirt 100% Cotton",
+    "imageUrl": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&q=80",
+    "ratings": 45,
+    "priceRupees": 799,
+    "isDiscount": true,
+    "discount": 5,
+    "isReturnable": true,
+    "isPayOnDelivery": true,
+    "isFreeDelivery": false,
+    "description": [
+      "Made from pure, soft, and breathable cotton.",
+      "Style redefined with unique, vibrant graphic prints.",
+      "All weather ready, perfect for summer or layering in winter.",
+      "Everyday comfort with a relaxed, standard fit.",
+      "Versatile staple for any casual wardrobe.",
+      "Travel friendly, easy to wash and wear."
+    ]
+  },
+  {
+    "productName": "Women's Ankle Boots Suede Block Heel",
+    "imageUrl": "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=500&q=80",
+    "ratings": 35,
+    "priceRupees": 2999,
+    "isDiscount": true,
+    "discount": 15,
+    "isReturnable": true,
+    "isPayOnDelivery": true,
+    "isFreeDelivery": true,
+    "description": [
+      "Constructed with premium faux suede.",
+      "Style redefined with a trendy, manageable block heel.",
+      "All weather ready with a sturdy, slip-resistant sole.",
+      "Cushioned footbed ensures comfort during extended wear.",
+      "Versatile, effortlessly elevating dresses or jeans.",
+      "Travel friendly, a stylish option for city trips."
+    ]
+  },
+  {
+    "productName": "Unisex Sports Smartwatch Fitness Tracker Waterproof",
+    "imageUrl": "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=500&q=80",
+    "ratings": 40,
+    "priceRupees": 5999,
+    "isDiscount": true,
+    "discount": 50,
+    "isReturnable": false,
+    "isPayOnDelivery": false,
+    "isFreeDelivery": true,
+    "description": [
+      "Built with a durable aluminum casing and silicone strap.",
+      "Style redefined with a sleek, minimalist digital display.",
+      "All weather ready and IP68 waterproof for swimming.",
+      "Lightweight comfort you'll forget you're wearing.",
+      "Versatile for tracking workouts, sleep, and receiving notifications.",
+      "Travel friendly with a long-lasting battery life."
+    ]
+  }
+]
