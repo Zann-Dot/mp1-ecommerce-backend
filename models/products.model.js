@@ -11,6 +11,7 @@ const productSchema = new Schema(
     isPayOnDelivery: Boolean,
     isFreeDelivery: Boolean,
     description: [String],
+    category: String,
   },
   { timestamps: true },
 );
