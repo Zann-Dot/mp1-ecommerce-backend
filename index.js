@@ -3,7 +3,9 @@ import express from "express";
 import cors from "cors";
 import { configDotenv } from "dotenv";
 import productRouter from "./routes/product.route.js";
+import userRouter from "./routes/user.route.js";
 import Products from "./models/products.model.js";
+
 import fs from "fs";
 const productData = JSON.parse(fs.readFileSync("defaultData/productData.json"));
 configDotenv();
@@ -23,6 +25,7 @@ const seedData = async () => {
 };
 
 app.use("/api", productRouter);
+app.use("/api", userRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is sunning on ${PORT}`);
