@@ -1,13 +1,13 @@
 import { connectToDatabase } from "./db/db.connect.js";
-import Products from "./models/products.model.js";
 import express from "express";
 import cors from "cors";
 import { configDotenv } from "dotenv";
+import productRouter from "./routes/product.route.js";
 configDotenv();
 connectToDatabase();
 const app = express();
 app.use(express.json());
-app.use(cors);
+app.use(cors());
 const PORT = process.env.PORT || 3000;
 
 const seedData = async () => {
@@ -18,6 +18,8 @@ const seedData = async () => {
     throw error.message;
   }
 };
+
+app.use("/api", productRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is sunning on ${PORT}`);
