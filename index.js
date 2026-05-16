@@ -5,10 +5,12 @@ import { configDotenv } from "dotenv";
 import productRouter from "./routes/product.route.js";
 import userRouter from "./routes/user.route.js";
 import categoryRouter from "./routes/category.route.js";
-import Products from "./models/products.model.js";
+import cartRouter from "./routes/cart.route.js";
 
+import Products from "./models/products.model.js";
 import fs from "fs";
 const productData = JSON.parse(fs.readFileSync("defaultData/productData.json"));
+
 configDotenv();
 connectToDatabase();
 const app = express();
@@ -17,18 +19,19 @@ app.use(cors());
 const PORT = process.env.PORT || 3000;
 
 const seedData = async () => {
-  try {
-    await Products.deleteMany({});
-    await Products.insertMany(productData);
-  } catch (error) {
-    throw error.message;
-  }
+    try {
+        await Products.deleteMany({});
+        await Products.insertMany(productData);
+    } catch (error) {
+        throw error.message;
+    }
 };
 
+app.use('/api', cartRouter)
 app.use("/api", productRouter);
 app.use("/api", userRouter);
 app.use("/api", categoryRouter);
 
 app.listen(PORT, () => {
-  console.log(`Server is sunning on ${PORT}`);
+    console.log(`Server is sunning on ${PORT}`);
 });
