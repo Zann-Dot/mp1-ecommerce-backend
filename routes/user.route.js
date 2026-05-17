@@ -3,6 +3,7 @@ import Users from "../models/users.model.js";
 import { registerUser } from "../components/hashingPassword.js";
 import { loginUser } from "../components/loginValidate.js";
 import jwt from "jsonwebtoken";
+import profileRouter from './user/customerProfile.route.js'
 const router = express.Router();
 
 router.get("/user", async (req, res) => {
@@ -80,5 +81,7 @@ router.post("/user/signup", async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
+
+router.use('/user', profileRouter);
 
 export default router;

@@ -6,6 +6,7 @@ import productRouter from "./routes/product.route.js";
 import userRouter from "./routes/user.route.js";
 import categoryRouter from "./routes/category.route.js";
 import cartRouter from "./routes/cart.route.js";
+import cookieParser from 'cookie-parser';
 
 import Products from "./models/products.model.js";
 import fs from "fs";
@@ -16,6 +17,7 @@ connectToDatabase();
 const app = express();
 app.use(express.json());
 app.use(cors());
+app.use(cookieParser());
 const PORT = process.env.PORT || 3000;
 
 const seedData = async () => {
