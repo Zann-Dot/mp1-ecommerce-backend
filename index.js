@@ -3,7 +3,7 @@ import express from "express";
 import cors from "cors";
 import { configDotenv } from "dotenv";
 import productRouter from "./routes/product.route.js";
-import userRouter from "./routes/user.route.js";
+import userRouter from "./routes/user/user.route.js";
 import categoryRouter from "./routes/category.route.js";
 import cartRouter from "./routes/cart.route.js";
 import cookieParser from 'cookie-parser';

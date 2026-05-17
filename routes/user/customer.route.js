@@ -1,30 +1,22 @@
 import express from "express";
-import Users from "../models/users.model.js";
-import { registerUser } from "../components/hashingPassword.js";
-import { loginUser } from "../components/loginValidate.js";
+import Users from "../../models/users.model.js";
+import { registerUser } from "../../components/hashingPassword.js";
+import { loginUser } from "../../components/loginValidate.js";
 import jwt from "jsonwebtoken";
-import profileRouter from './user/customerProfile.route.js'
 const router = express.Router();
-
-router.get("/user", async (req, res) => {
-    try {
-        const users = await Users.find();
-
-        if (users.length === 0)
-            return res.status(404).json({ error: "Users not found" });
-
-        res.json(users);
-    } catch (error) {
-        return res.status(500).json({ error: error.message });
-    }
-});
 
 router.post('/user/login', async (req, res) => {
     try {
+
         const JWT_SECRET = process.env.JWT_SECRET;
         const { username, email, password } = req.body;
 
         const user = await Users.findOne({ $or: [{ username }, { email }] });
+
+        if (user.mode === 'seller')
+            return res.status(401).json({
+                error: 'cannot access user'
+            })
 
         if (!user)
             return res.status(404).json({
@@ -81,7 +73,5 @@ router.post("/user/signup", async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
-
-router.use('/user', profileRouter);
 
 export default router;
