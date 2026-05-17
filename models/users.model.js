@@ -2,9 +2,18 @@ import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
     {
-        user: {
+        username: {
+            type: String,
+            required: true
+        },
+        password: {
+            type: String,
+            required: true
+        },
+        userMode: {
             type: String,
             default: "guest",
+            enum: ['customer', 'seller', 'guest']
         },
         firstName: {
             type: String,
@@ -35,6 +44,7 @@ const userSchema = new mongoose.Schema(
                 required: true,
             },
         },
+        shopName: { type: String || null },
     },
     { timestamps: true },
 );
