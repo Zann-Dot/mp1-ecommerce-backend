@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema(
             type: String,
             required: true
         },
-        userMode: {
+        mode: {
             type: String,
             default: "guest",
             enum: ['customer', 'seller', 'guest']
