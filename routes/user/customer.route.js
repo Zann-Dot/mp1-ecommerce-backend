@@ -1,11 +1,10 @@
 import express from "express";
 import Users from "../../models/users.model.js";
-import { registerUser } from "../../components/hashingPassword.js";
 import { loginUser } from "../../components/loginValidate.js";
 import jwt from "jsonwebtoken";
 const router = express.Router();
 
-router.post('/user/login', async (req, res) => {
+router.post('/user/customer/login', async (req, res) => {
     try {
 
         const JWT_SECRET = process.env.JWT_SECRET;
@@ -49,29 +48,6 @@ router.post('/user/login', async (req, res) => {
     }
 })
 
-router.post("/user/signup", async (req, res) => {
-    try {
-        const usersData = req.body;
 
-        const getUserByEmail = await Users.findOne({ email: usersData.email });
-        if (getUserByEmail)
-            return res.status(400).json({
-                error: 'Bad Request',
-                message: 'Email already exists. Please provide a diffrent one'
-            });
-
-        const hashedPassword = await registerUser(usersData.password);
-
-        const newUser = await Users.create({ ...usersData, password: hashedPassword });
-        res.json({
-            success: true,
-            message: 'new user added to database',
-            newUser
-        })
-
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-});
 
 export default router;

@@ -1,7 +1,7 @@
 import express from "express";
 import Users from "../models/users.model.js";
 import Cart from "../models/cart.model.js";
-import Products from "../models/products.model.js";
+
 const router = express.Router();
 
 router.get('/cart', async (req, res) => {

@@ -1,11 +1,10 @@
 import express from "express";
 import Users from "../../models/users.model.js";
-import { registerUser } from "../../components/hashingPassword.js";
 import { loginUser } from "../../components/loginValidate.js";
 import jwt from "jsonwebtoken";
 const router = express.Router();
 
-router.post('/user/login', async (req, res) => {
+router.post('/user/seller/login', async (req, res) => {
     try {
 
         const JWT_SECRET = process.env.JWT_SECRET;
@@ -13,7 +12,7 @@ router.post('/user/login', async (req, res) => {
 
         const user = await Users.findOne({ $or: [{ username }, { email }] });
 
-        if (user.mode === 'seller')
+        if (user.mode === 'customer')
             return res.status(401).json({
                 error: 'cannot access user'
             })
