@@ -44,6 +44,19 @@ router.post("/user/signup", async (req, res) => {
     }
 });
 
+router.post('user/logout', async (req, res) => {
+    res.clearCookie('signIn_user', {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'strict',
+    })
+
+    res.status(200).json({
+        message: 'Logged out successfully!'
+    })
+})
+
+
 router.use('/user', profileRouter);
 router.use('/user/seller', sellerRouter);
 router.use('/user/customer', customerRouter);

@@ -30,12 +30,16 @@ customerRouter.post('/login', async (req, res) => {
 
 
         const token = jwt.sign(
-            { userId: user._id, email: user.email },
+            {
+                userId: user._id,
+                email: user.email,
+                mode: user.mode
+            },
             JWT_SECRET_KEY,
             { expiresIn: '1h' }
         )
 
-        res.cookie('signIn_customer', token, {
+        res.cookie('signIn_user', token, {
             httpOnly: true,
             secure: true,
             sameSite: 'strict',
@@ -49,18 +53,6 @@ customerRouter.post('/login', async (req, res) => {
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
-})
-
-customerRouter.post('/logout', async (req, res) => {
-    res.clearCookie('signIn_customer', {
-        httpOnly: true,
-        secure: true,
-        sameSite: 'strict',
-    })
-
-    res.status(200).json({
-        message: 'Logged out successfully!'
-    })
 })
 
 export default customerRouter;

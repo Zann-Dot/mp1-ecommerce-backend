@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 
 function authenticateToken(req, res, next) {
-    const token = req.cookies.signIn_customer;
+    const token = req.cookies.signIn_user;
 
     if (!token)
         return res.status(401).json({ error: "Access Denied. Please log in." });
