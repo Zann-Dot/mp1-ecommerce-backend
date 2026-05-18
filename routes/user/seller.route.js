@@ -50,5 +50,16 @@ sellerRouter.post('/login', async (req, res) => {
     }
 })
 
+sellerRouter.post('/logout', async (req, res) => {
+    res.clearCookie('signIn_seller', {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'strict',
+    })
+
+    res.status(200).json({
+        message: 'Logged out successfully!'
+    })
+})
 
 export default sellerRouter;

@@ -51,6 +51,16 @@ customerRouter.post('/login', async (req, res) => {
     }
 })
 
+customerRouter.post('/logout', async (req, res) => {
+    res.clearCookie('signIn_customer', {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'strict',
+    })
 
+    res.status(200).json({
+        message: 'Logged out successfully!'
+    })
+})
 
 export default customerRouter;
