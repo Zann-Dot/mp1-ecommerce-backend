@@ -1,6 +1,6 @@
 import express from "express";
 import Users from "../../models/users.model.js";
-import profileRouter from './customerProfile.route.js'
+import profileRouter from './profileRouter.route.js'
 import sellerRouter from "./seller.route.js";
 import customerRouter from "./customer.route.js";
 import { registerUser } from "../../components/hashingPassword.js";
