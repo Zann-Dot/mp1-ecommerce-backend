@@ -45,7 +45,7 @@ router.post("/user/signup", async (req, res) => {
 });
 
 router.use('/user', profileRouter);
-router.use('/user', sellerRouter);
-router.use('/user', customerRouter);
+router.use('/user/seller', sellerRouter);
+router.use('/user/customer', customerRouter);
 
 export default router;

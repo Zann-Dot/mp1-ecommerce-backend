@@ -1,6 +1,7 @@
 import express from "express";
 import Users from "../models/users.model.js";
 import Cart from "../models/cart.model.js";
+import authenticateToken from "../components/authenticateToken.js";
 
 const router = express.Router();
 
@@ -21,9 +22,10 @@ router.get('/cart', async (req, res) => {
     }
 })
 
-router.post('/cart', async (req, res) => {
+router.post('/cart', authenticateToken, async (req, res) => {
     try {
-        const { userId = 'guest', product, quantity, size } = req.body;
+
+        const { userId, product, quantity, size } = req.body;
         let cartItem = await Cart.findOne({ product });
         const user = await Users.findById(userId);
         if (!user)
