@@ -37,6 +37,10 @@ const productSchema = new Schema(
             type: Boolean,
             required: true,
         },
+        isWishlist: {
+            type: Boolean,
+            required: true
+        },
         description: {
             type: [String],
             required: true,
