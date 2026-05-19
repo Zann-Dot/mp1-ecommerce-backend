@@ -10,6 +10,7 @@
     "isReturnable": true,
     "isPayOnDelivery": true,
     "isFreeDelivery": true,
+    "isWishlist": false,
     "description": [
       "Made from high-quality polyester blend for maximum durability.",
       "Style redefined with a modern, sleek quilted pattern.",
@@ -31,6 +32,7 @@
     "isReturnable": true,
     "isPayOnDelivery": true,
     "isFreeDelivery": true,
+    "isWishlist": false,
     "description": [
       "Crafted from premium cotton twill fabric.",
       "Style redefined with a timeless double-breasted design.",
@@ -52,6 +54,7 @@
     "isReturnable": true,
     "isPayOnDelivery": false,
     "isFreeDelivery": true,
+    "isWishlist": false,
     "description": [
       "Constructed from 100% heavy-duty denim.",
       "Style redefined with a classic vintage wash.",
@@ -73,6 +76,7 @@
     "isReturnable": false,
     "isPayOnDelivery": true,
     "isFreeDelivery": false,
+    "isWishlist": false,
     "description": [
       "Engineered with advanced moisture-wicking synthetic fabric.",
       "Style redefined for the modern athlete.",
@@ -94,6 +98,7 @@
     "isReturnable": true,
     "isPayOnDelivery": true,
     "isFreeDelivery": true,
+    "isWishlist": false,
     "description": [
       "Made from a premium blend of spandex and nylon.",
       "Style redefined with a flattering high-waist silhouette.",
@@ -115,6 +120,7 @@
     "isReturnable": true,
     "isPayOnDelivery": true,
     "isFreeDelivery": false,
+    "isWishlist": false,
     "description": [
       "Woven from ultra-soft, brushed cotton flannel.",
       "Style redefined with a classic plaid pattern.",
@@ -136,6 +142,7 @@
     "isReturnable": true,
     "isPayOnDelivery": false,
     "isFreeDelivery": true,
+    "isWishlist": false,
     "description": [
       "Knitted from luxurious, thick acrylic yarn.",
       "Style redefined with a cozy, oversized fit.",
@@ -157,6 +164,7 @@
     "isReturnable": true,
     "isPayOnDelivery": true,
     "isFreeDelivery": true,
+    "isWishlist": false,
     "description": [
       "Constructed with ripstop, water-resistant nylon.",
       "Style redefined for the modern explorer.",
@@ -178,6 +186,7 @@
     "isReturnable": true,
     "isPayOnDelivery": true,
     "isFreeDelivery": true,
+    "isWishlist": false,
     "description": [
       "Handcrafted from 100% genuine full-grain leather.",
       "Style redefined with a sleek, polished finish.",
@@ -199,6 +208,7 @@
     "isReturnable": true,
     "isPayOnDelivery": false,
     "isFreeDelivery": false,
+    "isWishlist": false,
     "description": [
       "Made from breathable, lightweight chiffon.",
       "Style redefined with a vibrant, eye-catching floral print.",
@@ -220,6 +230,7 @@
     "isReturnable": false,
     "isPayOnDelivery": true,
     "isFreeDelivery": false,
+    "isWishlist": false,
     "description": [
       "Spun from a soft, insulating wool blend.",
       "Style redefined with a minimalist ribbed texture.",
@@ -241,6 +252,7 @@
     "isReturnable": true,
     "isPayOnDelivery": true,
     "isFreeDelivery": true,
+    "isWishlist": false,
     "description": [
       "Tailored from a premium cotton-elastane blend.",
       "Style redefined with a sharp, modern slim fit.",
@@ -262,6 +274,7 @@
     "isReturnable": true,
     "isPayOnDelivery": true,
     "isFreeDelivery": true,
+    "isWishlist": false,
     "description": [
       "Crafted from high-quality, sustainable vegan leather.",
       "Style redefined with chic vintage-inspired brass hardware.",
@@ -283,6 +296,7 @@
     "isReturnable": true,
     "isPayOnDelivery": false,
     "isFreeDelivery": true,
+    "isWishlist": false,
     "description": [
       "Featuring impact-resistant polycarbonate lenses and a metal frame.",
       "Style redefined with a classic retro aesthetic.",
@@ -304,6 +318,7 @@
     "isReturnable": true,
     "isPayOnDelivery": true,
     "isFreeDelivery": false,
+    "isWishlist": false,
     "description": [
       "Made from pure, soft, and breathable cotton.",
       "Style redefined with unique, vibrant graphic prints.",
@@ -325,6 +340,7 @@
     "isReturnable": true,
     "isPayOnDelivery": true,
     "isFreeDelivery": true,
+    "isWishlist": false,
     "description": [
       "Constructed with premium faux suede.",
       "Style redefined with a trendy, manageable block heel.",
@@ -346,6 +362,7 @@
     "isReturnable": false,
     "isPayOnDelivery": false,
     "isFreeDelivery": true,
+    "isWishlist": false,
     "description": [
       "Built with a durable aluminum casing and silicone strap.",
       "Style redefined with a sleek, minimalist digital display.",
