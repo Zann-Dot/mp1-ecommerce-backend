@@ -68,7 +68,6 @@ router.put("/user/:userId", async (req, res) => {
         if (!updatedUserAddress)
             return res.status(404).json({ error: 'user not found' });
 
-
         res.json({
             success: true,
             message: 'Users address updated',
