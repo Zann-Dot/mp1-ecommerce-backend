@@ -56,6 +56,28 @@ router.post('user/logout', async (req, res) => {
     })
 })
 
+router.put("/user/:userId", async (req, res) => {
+    try {
+        const { address } = req.body
+        const updatedUserAddress = await Users.findByIdAndUpdate(
+            req.params.userId,
+            { address },
+            { new: true });
+
+
+        if (!updatedUserAddress)
+            return res.status(404).json({ error: 'user not found' });
+
+
+        res.json({
+            success: true,
+            message: 'Users address updated',
+            updatedUserAddress
+        })
+    } catch (error) {
+        res.status(500).json({ error: error.message })
+    }
+})
 
 router.use('/user', profileRouter);
 router.use('/user/seller', sellerRouter);
