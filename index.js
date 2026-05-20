@@ -17,8 +17,17 @@ const productData = JSON.parse(fs.readFileSync("defaultData/productData.json"));
 configDotenv();
 connectToDatabase();
 const app = express();
+
+const corsOption = {
+    origin: 'http://localhost:5173',
+    method: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true,
+    optionSuccessStatus: 200
+
+}
+
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOption));
 app.use(cookieParser());
 const PORT = process.env.PORT || 3000;
 
