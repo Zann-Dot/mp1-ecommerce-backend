@@ -40,6 +40,8 @@ const seedData = async () => {
     }
 };
 
+
+
 app.use('/api', cartRouter)
 app.use("/api", productRouter);
 app.use("/api", userRouter);
