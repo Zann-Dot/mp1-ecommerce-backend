@@ -23,7 +23,6 @@ const corsOption = {
     method: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
     optionSuccessStatus: 200
-
 }
 
 app.use(express.json());
@@ -39,7 +38,7 @@ const seedData = async () => {
         throw error.message;
     }
 };
-
+// seedData();
 
 
 app.use('/api', cartRouter)
