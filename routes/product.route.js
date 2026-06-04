@@ -56,4 +56,22 @@ router.get("/products/ratings/:ratings", async (req, res) => {
   }
 });
 
+router.get("/products/search/:search", async (req, res) => {
+  try {
+    const { search } = req.params;
+
+    const searchRegex = new RegExp(`\\b${search}\\b`, 'i');
+    const searchedProducts = await Products.find({
+      $or: [
+        { productName: searchRegex },
+        { category: searchRegex }
+      ]
+    });
+
+    res.json(searchedProducts);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 export default router;
