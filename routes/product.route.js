@@ -7,6 +7,7 @@ router.get("/products", async (req, res) => {
         const categoryQuery = req.query.c;
         const minPrice = req.query.min;
         const maxPrice = req.query.max;
+        const rating = req.query.r;
         let query = {};
 
         if (categoryQuery) {
@@ -17,7 +18,19 @@ router.get("/products", async (req, res) => {
         }
 
         if (minPrice && maxPrice)
-            query.priceRupees = { $gte: Number(minPrice), $lte: Number(maxPrice) };
+            query.priceRupees =
+                Number(maxPrice) === 2000
+                    ? { $gte: Number(minPrice) }
+                    : { $gte: Number(minPrice), $lte: Number(maxPrice) };
+
+        if (rating)
+            query.ratings =
+                rating !== "all"
+                    ? {
+                        $gte: Number(rating) * 10,
+                        $lt: Number(rating) * 10 + 10,
+                    }
+                    : { $gt: 0 };
 
         const products = await Products.find(query);
 
