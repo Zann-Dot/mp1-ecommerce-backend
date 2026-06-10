@@ -39,7 +39,7 @@ customerRouter.post('/login', async (req, res) => {
             { expiresIn: '1h' }
         )
 
-        res.cookie('signIn_user', token, {
+        res.cookie('login_user', token, {
             httpOnly: true,
             secure: true,
             sameSite: 'strict',

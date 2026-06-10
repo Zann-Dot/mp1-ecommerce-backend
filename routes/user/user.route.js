@@ -22,13 +22,25 @@ router.get("/user", async (req, res) => {
 router.post("/user/signup", async (req, res) => {
     try {
         const usersData = req.body;
+        const strongPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
+        const findUserByEmail = await Users.findOne({ email: usersData.email });
+        const findUserByUsername = await Users.findOne({ username: usersData.username });
 
-        const getUserByEmail = await Users.findOne({ email: usersData.email });
-        if (getUserByEmail)
+        if (findUserByEmail)
             return res.status(400).json({
                 error: 'Bad Request',
-                message: 'Email already exists. Please provide a diffirent one'
+                message: "Email already exists. Try a different one"
             });
+
+        if (findUserByUsername)
+            return res.status(400).json({
+                error: 'Bad Request',
+                message: 'This username is already in use'
+            });
+
+        if (!strongPasswordRegex.test(req.body.password)) {
+            return res.status(400).json({ message: "Please provide a strong password" });
+        }
 
         const hashedPassword = await registerUser(usersData.password);
 

@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema(
         },
         password: {
             type: String,
-            required: true
+            required: true,
         },
         mode: {
             type: String,
@@ -34,6 +34,7 @@ const userSchema = new mongoose.Schema(
         phoneNumber: {
             type: String,
             required: true,
+            match: [/^[6-9]\d{9}$/, 'Please provide a valid 10-digit phone number']
         },
         address: {
             addressLine: String,
@@ -42,9 +43,16 @@ const userSchema = new mongoose.Schema(
             pincode: {
                 type: String,
                 required: true,
+                match: [/^\d{6}$/, "Pincode must be number only"]
             },
         },
-        shopName: { type: String || null },
+        shopName: {
+            type: String || null
+        },
+        TnC: {
+            type: Boolean,
+            required: true
+        }
     },
     { timestamps: true },
 );
