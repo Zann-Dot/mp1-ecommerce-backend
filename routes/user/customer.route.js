@@ -4,55 +4,55 @@ import { loginUser } from "../../components/loginValidate.js";
 import jwt from "jsonwebtoken";
 const customerRouter = express.Router({ mergeParams: true });
 
-customerRouter.post('/login', async (req, res) => {
+customerRouter.post("/login", async (req, res) => {
     try {
-
         const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
-        const { username, email, password } = req.body;
+        const { emailOrPassword, password } = req.body;
 
-        const user = await Users.findOne({ $or: [{ username }, { email }] });
+        const user = await Users.findOne({
+            $or: [{ username: emailOrPassword }, { email: emailOrPassword }],
+        });
 
         if (!user)
             return res.status(404).json({
-                error: 'Not Found',
-                message: "User not registered"
+                error: "Not Found",
+                message: "User not registered",
             });
 
-        if (user.mode === 'seller')
+        if (user.mode === "seller")
             return res.status(401).json({
-                error: 'cannot access user'
-            })
+                error: "cannot access user",
+            });
 
         const validatePassword = await loginUser(password, user.password);
 
         if (!validatePassword.success)
             return res.status(401).json({ error: validatePassword.message });
 
-
         const token = jwt.sign(
             {
                 userId: user._id,
                 email: user.email,
-                mode: user.mode
+                mode: user.mode,
             },
             JWT_SECRET_KEY,
-            { expiresIn: '1h' }
-        )
+            { expiresIn: "1h" },
+        );
 
-        res.cookie('login_user', token, {
+        res.cookie("login_user", token, {
             httpOnly: true,
             secure: true,
-            sameSite: 'strict',
-            maxAge: 3600000
-        })
+            sameSite: "strict",
+            maxAge: 3600000,
+        });
 
         res.status(200).json({
             success: true,
-            message: "Logged in successfully!"
+            message: "Logged in successfully!",
         });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
-})
+});
 
 export default customerRouter;

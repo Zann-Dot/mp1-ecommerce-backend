@@ -16,18 +16,18 @@ profileRouter.get('/profile/customer', authenticateToken, async (req, res) => {
     }
 });
 
-profileRouter.get('/profile/customer', authenticateToken, async (req, res) => {
-    try {
-        const userDetails = await Users.findById(req.user.userId);
+// profileRouter.get('/profile/customer', authenticateToken, async (req, res) => {
+//     try {
+//         const userDetails = await Users.findById(req.user.userId);
 
-        if (!userDetails)
-            return res.status(404).json({ error: 'user not found' });
+//         if (!userDetails)
+//             return res.status(404).json({ error: 'user not found' });
 
-        res.json(userDetails)
-    } catch (error) {
-        res.status(500).json({ error: error.message })
-    }
-});
+//         res.json(userDetails)
+//     } catch (error) {
+//         res.status(500).json({ error: error.message })
+//     }
+// });
 
 
 export default profileRouter;
