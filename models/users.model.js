@@ -1,4 +1,12 @@
 import mongoose from "mongoose";
+const capitalizeWords = (str) => {
+    if (!str) return str;
+    return str
+        .toLowerCase()
+        .split(' ')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+};
 
 const userSchema = new mongoose.Schema(
     {
@@ -18,10 +26,12 @@ const userSchema = new mongoose.Schema(
         firstName: {
             type: String,
             required: true,
+            set: capitalizeWords
         },
         lastName: {
             type: String,
             required: true,
+            set: capitalizeWords
         },
         email: {
             type: String,
@@ -47,7 +57,8 @@ const userSchema = new mongoose.Schema(
             },
         },
         shopName: {
-            type: String || null
+            type: String || null,
+            set: capitalizeWords
         },
         TnC: {
             type: Boolean,
