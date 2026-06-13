@@ -4,8 +4,6 @@ const wishListRouter = express.Router();
 
 wishListRouter.post('/wishlist', async (req, res) => {
     const { productId, isWishlist } = req.body;
-    console.log(isWishlist);
-
     try {
         const updateProductToWishlist = await Products.findByIdAndUpdate(
             productId,
