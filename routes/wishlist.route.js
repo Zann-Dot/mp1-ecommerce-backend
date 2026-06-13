@@ -2,11 +2,14 @@ import express from "express";
 import Products from "../models/products.model.js";
 const wishListRouter = express.Router();
 
-wishListRouter.post('/wishlist/:productId', async (req, res) => {
+wishListRouter.post('/wishlist', async (req, res) => {
+    const { productId, isWishlist } = req.body;
+    console.log(isWishlist);
+
     try {
         const updateProductToWishlist = await Products.findByIdAndUpdate(
-            req.params.productId,
-            { isWishlist: true },
+            productId,
+            { isWishlist },
             { returnDocument: 'after' }
         )
 

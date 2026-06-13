@@ -56,8 +56,8 @@ router.post("/user/signup", async (req, res) => {
     }
 });
 
-router.post('user/logout', async (req, res) => {
-    res.clearCookie('signIn_user', {
+router.post('/user/logout', async (req, res) => {
+    res.clearCookie('login_user', {
         httpOnly: true,
         secure: true,
         sameSite: 'strict',
