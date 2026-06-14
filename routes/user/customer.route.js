@@ -7,10 +7,10 @@ const customerRouter = express.Router({ mergeParams: true });
 customerRouter.post("/login", async (req, res) => {
     try {
         const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
-        const { emailOrPassword, password } = req.body;
+        const { emailOrUsername, password } = req.body;
 
         const user = await Users.findOne({
-            $or: [{ username: emailOrPassword }, { email: emailOrPassword }],
+            $or: [{ username: emailOrUsername }, { email: emailOrUsername }],
         });
 
         if (!user)
