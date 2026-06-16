@@ -9,6 +9,7 @@ import cartRouter from "./routes/cart.route.js";
 import wishListRouter from "./routes/wishlist.route.js";
 import cookieParser from 'cookie-parser';
 import ordersRouter from "./routes/order.route.js";
+import paymentRouter from "./routes/paymentSummary.route.js";
 
 import Products from "./models/products.model.js";
 import fs from "fs";
@@ -47,6 +48,7 @@ app.use("/api", userRouter);
 app.use("/api", categoryRouter);
 app.use("/api", wishListRouter);
 app.use("/api", ordersRouter);
+app.use("/api", paymentRouter);
 
 app.listen(PORT, () => {
     console.log(`Server is sunning on ${PORT}`);
