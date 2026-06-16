@@ -18,11 +18,11 @@ router.get('/cart', async (req, res) => {
         res.json(cartItems);
 
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ message: error.message });
     }
 })
 
-router.post('/cart', authenticateToken, async (req, res) => {
+router.post('/cart', async (req, res) => {
     try {
 
         const { userId, product, quantity, size } = req.body;
@@ -51,7 +51,7 @@ router.post('/cart', authenticateToken, async (req, res) => {
             updatedCartItem: cartItem
         });
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ message: error.message });
     }
 })
 
@@ -93,7 +93,7 @@ router.put('/cart/:productId', async (req, res) => {
             updatedCartItem
         })
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ message: error.message });
     }
 })
 
@@ -124,7 +124,7 @@ router.delete("/cart", async (req, res) => {
             deletedCount: result.deletedCount,
         });
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ message: error.message });
     }
 });
 export default router;
