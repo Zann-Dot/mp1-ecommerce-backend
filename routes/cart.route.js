@@ -1,7 +1,6 @@
 import express from "express";
 import Users from "../models/users.model.js";
 import Cart from "../models/cart.model.js";
-import authenticateToken from "../components/authenticateToken.js";
 
 const router = express.Router();
 
@@ -29,7 +28,7 @@ router.post('/cart', async (req, res) => {
         let cartItem = await Cart.findOne({ product });
         const user = await Users.findById(userId);
         if (!user)
-            return res.status(404).json({ error: 'User not found' });
+            return res.status(404).json({ message: 'User not found' });
 
         if (typeof quantity !== "number" || quantity < 1)
             return res.status(400).json({
