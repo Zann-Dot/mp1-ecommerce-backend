@@ -23,24 +23,36 @@ router.get('/cart', async (req, res) => {
 
 router.post('/cart', async (req, res) => {
     try {
-
         const { userId, product, quantity, size } = req.body;
         let cartItem = await Cart.findOne({ product });
         const user = await Users.findById(userId);
+
+        const updates = {};
+        if (quantity !== null) updates.quantity = Number(quantity);
+        if (size !== null) updates.size = size;
+
         if (!user)
             return res.status(404).json({ message: 'User not found' });
 
-        if (typeof quantity !== "number" || quantity < 1)
-            return res.status(400).json({
-                error: 'Bad Request',
-                message: 'Type quantity must be a number and greater than equals to 1'
-            });
-
-
         if (cartItem) {
-            cartItem.quantity += quantity;
-            await cartItem.save();
+            cartItem = await Cart.findOneAndUpdate(
+                { product },
+                { $set: updates },
+                { returnDocument: "after" }
+            );
+
+            if (!cartItem)
+                return res.status(404).json({
+                    error: 'Not Found',
+                    message: `Cannot find cart item for product ${product}`
+                });
         } else {
+            if (typeof quantity !== "number" || quantity < 1)
+                return res.status(400).json({
+                    error: 'Bad Request',
+                    message: 'Type quantity must be a number and greater than equals to 1'
+                });
+
             cartItem = await Cart.create({ userId, product, quantity, size });
         }
 
@@ -49,48 +61,6 @@ router.post('/cart', async (req, res) => {
             message: 'Added item to cart successfully',
             updatedCartItem: cartItem
         });
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-})
-
-router.put('/cart/:productId', async (req, res) => {
-    try {
-        const product = req.params.productId
-        const { quantity } = req.body;
-
-        const cartItem = await Cart.findOne({ product });
-
-        if (!cartItem)
-            return res.status(404).json({
-                error: 'Not Found',
-                message: `cannot find cart item of _id ${product}`
-            });
-
-        if (typeof quantity !== "number" || quantity < 1)
-            return res.status(400).json({
-                error: 'Bad Request',
-                message: 'Type quantity must be a number and greater than equals to 1'
-            });
-
-
-        if (cartItem.quantity - quantity < 0)
-            return res.status(400).json({
-                error: 'Bad Request',
-                message: 'cart item quantity cannot be less than zero'
-            });
-
-        const updatedCartItem = await Cart.findOneAndUpdate(
-            { product },
-            { quantity: cartItem.quantity - quantity },
-            { returnDocument: 'after' }
-        );
-
-        res.json({
-            success: true,
-            message: 'Item updated successfully',
-            updatedCartItem
-        })
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
