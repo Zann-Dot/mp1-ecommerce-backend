@@ -11,7 +11,7 @@ router.get('/cart', async (req, res) => {
         if (!cartItems || cartItems.length === 0)
             return res.status(404).json({
                 error: 'Not Found',
-                message: 'Cannot find cart items'
+                message: 'Cart is Empty'
             });
 
         res.json(cartItems);
