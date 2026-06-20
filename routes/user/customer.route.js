@@ -36,14 +36,14 @@ customerRouter.post("/login", async (req, res) => {
                 mode: user.mode,
             },
             JWT_SECRET_KEY,
-            { expiresIn: "1h" },
+            { expiresIn: "12h" },
         );
 
         res.cookie("login_user", token, {
             httpOnly: true,
             secure: true,
             sameSite: "strict",
-            maxAge: 3600000,
+            maxAge: 43200000,
         });
 
         res.status(200).json({
