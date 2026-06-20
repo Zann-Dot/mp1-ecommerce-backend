@@ -27,7 +27,6 @@ checkoutRouter.post("/checkout", async (req, res) => {
             !fullName ||
             !phoneNumber ||
             !address ||
-            !shipping ||
             !deliveryTime
         )
             return res.status(401).json({
