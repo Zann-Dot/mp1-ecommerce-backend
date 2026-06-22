@@ -30,7 +30,11 @@ const ordersSchema = new Schema({
         deliveryTime: {
             type: Number,
             required: true
-        }
+        },
+    },
+    orderNumber: {
+        type: Number,
+        required: true
     }
 }, { timestamps: true });
 
