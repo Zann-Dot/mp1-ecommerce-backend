@@ -21,7 +21,14 @@ const ordersSchema = new Schema({
             }
         ],
         deliveryAddress: {
-            type: String,
+            addressLine: { type: String, required: true },
+            addressLine2: String,
+            city: { type: String, required: true },
+            state: { type: String, required: true },
+            pincode: { type: String, required: true },
+        },
+        deliveryTime: {
+            type: Number,
             required: true
         }
     }
