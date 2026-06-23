@@ -1,7 +1,7 @@
-import express from 'express';
-import Cart from '../models/cart.model.js';
-import Products from '../models/products.model.js';
-import Orders from '../models/orders.model.js';
+import express from "express";
+import Cart from "../models/cart.model.js";
+import Products from "../models/products.model.js";
+import Orders from "../models/orders.model.js";
 const router = express.Router();
 
 router.get("/paymentSummary", async (req, res) => {
@@ -16,7 +16,9 @@ router.get("/paymentSummary", async (req, res) => {
         if (cartItems.length !== 0) {
             for (const item of cartItems) {
                 const product = await Products.findById(item.product._id);
-                const discountedPrice = Math.round(product.priceRupees - (product.priceRupees * product.discount) / 100);
+                const discountedPrice = Math.round(
+                    product.priceRupees - (product.priceRupees * product.discount) / 100,
+                );
                 subTotal += discountedPrice * item.quantity;
             }
         }
@@ -28,26 +30,31 @@ router.get("/paymentSummary", async (req, res) => {
             subTotal,
             shippingCharge,
             taxCharge,
-            netTotal
-        })
-
+            netTotal,
+        });
     } catch (error) {
-        res.status(500).json({ error: error.message })
+        res.status(500).json({ error: error.message });
     }
-})
+});
 
-router.get("/paymenSummary/order/:orderNumber", async (req, res) => {
+router.get("/paymentSummary/order/:orderNumber", async (req, res) => {
     try {
         const { orderNumber } = req.params;
-        const order = await Orders.findOne({ orderNumber });
+        const order = await Orders.findOne({ orderNumber }).populate({
+            path: "orderSummary.cartItems.product",
+            model: "Products",
+        });
 
-        if (!order)
-            return res.status(404).json({ error: "Order not found" });
+        if (!order) return res.status(404).json({ error: "Order not found" });
 
-        order.orderSummary.cartItems.reduce((prev, curr) => prev + curr.quantity, 0);
+        const totalOrderAmount = order.orderSummary.cartItems.reduce(
+            (prev, curr) => prev + curr.quantity * curr.product.priceRupees,
+            0,
+        );
+        res.json({ totalOrderAmount });
     } catch (error) {
-        res.status(500).json({ error: error.message })
+        res.status(500).json({ error: error.message });
     }
-})
+});
 
 export default router;
