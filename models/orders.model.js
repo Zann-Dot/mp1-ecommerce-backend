@@ -14,10 +14,11 @@ const ordersSchema = new Schema({
             default: Date.now(),
             required: true
         },
-        orderQuantity: [
+        cartItems: [
             {
                 productId: String,
-                quantity: Number
+                quantity: Number,
+                size: String
             }
         ],
         deliveryAddress: {
