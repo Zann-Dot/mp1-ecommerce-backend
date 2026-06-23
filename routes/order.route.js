@@ -4,27 +4,21 @@ const ordersRouter = express.Router();
 
 ordersRouter.post("/orders", async (req, res) => {
     try {
-        const { productSummary, orderSummary, orderNumber } = req.body;
-
-        if (productSummary.length === 0 || !Array.isArray(productSummary))
-            return res
-                .status(401)
-                .json({ error: "product summary must be an array" });
+        const { orderSummary, orderNumber } = req.body;
 
         if (!orderSummary)
             return res.status(401).json({ error: "order summary is empty" });
 
         if (typeof orderNumber !== "number")
-            return res.status(401).json({ error: "Order number must be a number" })
+            return res.status(401).json({ error: "Order number must be a number" });
 
         const orders = await Orders.findOneAndUpdate(
             { orderNumber },
-            { productSummary, orderSummary },
+            { orderSummary },
             { returnDocument: "after" },
         );
 
-        if (!orders)
-            await Orders.create({ productSummary, orderSummary, orderNumber });
+        if (!orders) await Orders.create({ orderSummary, orderNumber });
 
         res.json({
             success: true,
@@ -37,7 +31,10 @@ ordersRouter.post("/orders", async (req, res) => {
 
 ordersRouter.get("/orders", async (req, res) => {
     try {
-        const orders = await Orders.find().populate("productSummary");
+        const orders = await Orders.find().populate({
+            path: "orderSummary.cartItems.product",
+            model: "Products",
+        });
 
         if (orders.length === 0)
             return res.status(404).json({ error: "orders not found" });

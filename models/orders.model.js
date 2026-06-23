@@ -1,13 +1,6 @@
 import { model, Schema } from "mongoose";
 
 const ordersSchema = new Schema({
-    productSummary: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Products',
-            required: true
-        }
-    ],
     orderSummary: {
         orderDate: {
             type: Date,
@@ -16,7 +9,11 @@ const ordersSchema = new Schema({
         },
         cartItems: [
             {
-                productId: String,
+                product: {
+                    type: Schema.Types.ObjectId,
+                    ref: 'Products',
+                    required: true
+                },
                 quantity: Number,
                 size: String
             }
