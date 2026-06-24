@@ -3,8 +3,7 @@ import { model, Schema } from "mongoose";
 const ordersSchema = new Schema({
     orderSummary: {
         orderDate: {
-            type: Date,
-            default: Date.now(),
+            type: Number,
             required: true
         },
         cartItems: [
