@@ -55,7 +55,10 @@ const userSchema = new mongoose.Schema(
                 required: true,
                 match: [/^\d{6}$/, "Pincode must be number only"]
             },
-            isDefault: Boolean
+            isDefault: {
+                type: Boolean,
+                default: false
+            }
         }],
         shopName: {
             type: String || null,

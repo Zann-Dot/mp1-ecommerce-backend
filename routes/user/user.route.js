@@ -1,9 +1,10 @@
 import express from "express";
 import Users from "../../models/users.model.js";
-import profileRouter from './profileRouter.route.js'
+import profileRouter from "./profileRouter.route.js";
 import sellerRouter from "./seller.route.js";
 import customerRouter from "./customer.route.js";
 import { registerUser } from "../../components/hashingPassword.js";
+import mongoose from "mongoose";
 const router = express.Router();
 
 router.get("/user", async (req, res) => {
@@ -22,76 +23,132 @@ router.get("/user", async (req, res) => {
 router.post("/user/signup", async (req, res) => {
     try {
         const usersData = req.body;
-        const strongPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
+        const strongPasswordRegex =
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
         const findUserByEmail = await Users.findOne({ email: usersData.email });
-        const findUserByUsername = await Users.findOne({ username: usersData.username });
+        const findUserByUsername = await Users.findOne({
+            username: usersData.username,
+        });
 
         if (findUserByEmail)
             return res.status(400).json({
-                error: 'Bad Request',
-                message: "Email already exists. Try a different one"
+                error: "Bad Request",
+                message: "Email already exists. Try a different one",
             });
 
         if (findUserByUsername)
             return res.status(400).json({
-                error: 'Bad Request',
-                message: 'This username is already in use'
+                error: "Bad Request",
+                message: "This username is already in use",
             });
 
         if (!strongPasswordRegex.test(req.body.password)) {
-            return res.status(400).json({ message: "Please provide a strong password" });
+            return res
+                .status(400)
+                .json({ message: "Please provide a strong password" });
         }
 
         const hashedPassword = await registerUser(usersData.password);
 
-        const newUser = await Users.create({ ...usersData, password: hashedPassword });
+        const newUser = await Users.create({
+            ...usersData,
+            password: hashedPassword,
+        });
         res.json({
             success: true,
-            message: 'new user added to database',
-            newUser
-        })
-
+            message: "new user added to database",
+            newUser,
+        });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 });
 
-router.post('/user/logout', async (req, res) => {
-    res.clearCookie('login_user', {
+router.post("/user/logout", async (req, res) => {
+    res.clearCookie("login_user", {
         httpOnly: true,
         secure: true,
-        sameSite: 'strict',
-    })
+        sameSite: "strict",
+    });
 
     res.status(200).json({
-        message: 'Logged out successfully!'
-    })
-})
+        message: "Logged out successfully!",
+    });
+});
 
-router.put("/user/:userId", async (req, res) => {
+router.put("/user/address/:userId", async (req, res) => {
     try {
-        const { address } = req.body
+        const { address } = req.body;
         const updatedUserAddress = await Users.findByIdAndUpdate(
             req.params.userId,
             { address },
-            { new: true });
-
+            { new: true },
+        );
 
         if (!updatedUserAddress)
-            return res.status(404).json({ error: 'user not found' });
+            return res.status(404).json({ error: "user not found" });
 
         res.json({
             success: true,
-            message: 'Users address updated',
-            updatedUserAddress
-        })
+            message: "Users address updated",
+            updatedUserAddress,
+        });
     } catch (error) {
-        res.status(500).json({ error: error.message })
+        res.status(500).json({ error: error.message });
     }
-})
+});
 
-router.use('/user', profileRouter);
-router.use('/user/seller', sellerRouter);
-router.use('/user/customer', customerRouter);
+router.put("/user/defaultAddress/:userId/:addressId", async (req, res) => {
+    try {
+        const { userId, addressId } = req.params;
+
+        await Users.updateOne(
+            { _id: userId },
+            { $set: { "address.$[].isDefault": false } },
+        );
+
+        const updatedUser = await Users.findOneAndUpdate(
+            { _id: userId, "address._id": new mongoose.Types.ObjectId(addressId) },
+            { $set: { "address.$.isDefault": true } },
+            { new: true },
+        );
+
+        if (!updatedUser)
+            return res.status(404).json({ error: "User or address not found" });
+
+        res.json({ address: updatedUser.address });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+router.put("/user/remove/:userId/:addressId", async (req, res) => {
+    try {
+        const { userId, addressId } = req.params;
+        const updatedUser = await Users.findOneAndUpdate(
+            {
+                _id: userId,
+                "address._id": new mongoose.Types.ObjectId(addressId),
+            },
+            {
+                $pull: {
+                    address: { _id: new mongoose.Types.ObjectId(addressId) },
+                },
+            },
+            { new: true },
+        );
+
+        if (!updatedUser)
+            return res.status(404).json({ error: "address not removed" });
+
+        res.json(updatedUser);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+router.use("/user", profileRouter);
+router.use("/user/seller", sellerRouter);
+router.use("/user/customer", customerRouter);
 
 export default router;
