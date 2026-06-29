@@ -82,7 +82,12 @@ router.put("/user/address/:userId", async (req, res) => {
         const { addressId } = req.query;
         const address = req.body;
 
-        if (address == null)
+        if (address == null
+            || !address.addressLine
+            || !address.city
+            || !address.state
+            || !address.pincode
+        )
             return res.status(401).json({ error: "Please provide address details" });
 
         if (!addressId || addressId === "") {
