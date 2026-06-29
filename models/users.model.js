@@ -47,9 +47,9 @@ const userSchema = new mongoose.Schema(
             match: [/^[6-9]\d{9}$/, 'Please provide a valid 10-digit phone number']
         },
         address: [{
-            addressLine: String,
-            city: String,
-            state: String,
+            addressLine: { type: String, set: capitalizeWords },
+            city: { type: String, set: capitalizeWords },
+            state: { type: String, set: capitalizeWords },
             pincode: {
                 type: String,
                 required: true,
