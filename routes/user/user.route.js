@@ -78,10 +78,30 @@ router.post("/user/logout", async (req, res) => {
 
 router.put("/user/address/:userId", async (req, res) => {
     try {
-        const { address } = req.body;
-        const updatedUserAddress = await Users.findByIdAndUpdate(
-            req.params.userId,
-            { address },
+        const { userId } = req.params;
+        const { addressId } = req.query;
+        const address = req.body;
+
+        if (address == null)
+            return res.status(401).json({ error: "Please provide address details" });
+
+        if (!addressId || addressId === "") {
+            await Users.updateOne(
+                { _id: userId },
+                { $push: { address } },
+            );
+            return res.json({
+                success: true,
+                message: "Users address added",
+            });
+        }
+
+        const updatedUserAddress = await Users.findOneAndUpdate(
+            {
+                _id: userId,
+                "address._id": new mongoose.Types.ObjectId(addressId),
+            },
+            { $set: { "address.$": address } },
             { new: true },
         );
 
@@ -101,6 +121,10 @@ router.put("/user/address/:userId", async (req, res) => {
 router.put("/user/defaultAddress/:userId/:addressId", async (req, res) => {
     try {
         const { userId, addressId } = req.params;
+        const { isDefault } = req.body;
+
+        if (addressId == null || userId == null)
+            return res.status(401).json({ error: "Please provide user id or/and address id details" });
 
         await Users.updateOne(
             { _id: userId },
@@ -109,14 +133,17 @@ router.put("/user/defaultAddress/:userId/:addressId", async (req, res) => {
 
         const updatedUser = await Users.findOneAndUpdate(
             { _id: userId, "address._id": new mongoose.Types.ObjectId(addressId) },
-            { $set: { "address.$.isDefault": true } },
+            { $set: { "address.$.isDefault": isDefault } },
             { new: true },
         );
 
         if (!updatedUser)
             return res.status(404).json({ error: "User or address not found" });
 
-        res.json({ address: updatedUser.address });
+        res.json({
+            success: true,
+            updateAddress: updatedUser.address
+        });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -141,7 +168,11 @@ router.put("/user/remove/:userId/:addressId", async (req, res) => {
         if (!updatedUser)
             return res.status(404).json({ error: "address not removed" });
 
-        res.json(updatedUser);
+        res.json({
+            success: true,
+            message: "Address removed",
+            updatedUser
+        });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

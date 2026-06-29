@@ -58,7 +58,12 @@ const userSchema = new mongoose.Schema(
             isDefault: {
                 type: Boolean,
                 default: false
-            }
+            },
+            altPhoneNumber: {
+                type: String,
+                required: false,
+                match: [/^[6-9]\d{9}$/, 'Please provide a valid 10-digit phone number']
+            },
         }],
         shopName: {
             type: String || null,
