@@ -11,10 +11,7 @@ import cookieParser from 'cookie-parser';
 import ordersRouter from "./routes/order.route.js";
 import paymentRouter from "./routes/paymentSummary.route.js";
 import checkoutRouter from "./routes/checkout.route.js";
-
 import Products from "./models/products.model.js";
-import fs from "fs";
-const productData = JSON.parse(fs.readFileSync("defaultData/productData.json"));
 
 configDotenv();
 connectToDatabase();
@@ -32,14 +29,14 @@ app.use(cors(corsOption));
 app.use(cookieParser());
 const PORT = process.env.PORT || 3000;
 
-const seedData = async () => {
-    try {
-        await Products.deleteMany({});
-        await Products.insertMany(productData);
-    } catch (error) {
-        throw error.message;
-    }
-};
+// const seedData = async () => {
+//     try {
+//         await Products.deleteMany({});
+//         await Products.insertMany(productData);
+//     } catch (error) {
+//         throw error.message;
+//     }
+// };
 // seedData();
 
 
