@@ -18,7 +18,7 @@ connectToDatabase();
 const app = express();
 
 const corsOption = {
-    origin: 'https://shopperstore-theta.vercel.app/',
+    origin: 'https://shopperstore-theta.vercel.app',
     method: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
     optionSuccessStatus: 200
