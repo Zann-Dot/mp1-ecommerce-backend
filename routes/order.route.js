@@ -4,7 +4,7 @@ const ordersRouter = express.Router();
 
 ordersRouter.post("/orders", async (req, res) => {
     try {
-        const { orderSummary, orderNumber } = req.body;
+        const { userId, orderSummary, orderNumber } = req.body;
 
         if (!orderSummary)
             return res.status(401).json({ error: "order summary is empty" });
@@ -13,12 +13,12 @@ ordersRouter.post("/orders", async (req, res) => {
             return res.status(401).json({ error: "Order number must be a number" });
 
         const orders = await Orders.findOneAndUpdate(
-            { orderNumber },
+            { orderNumber, userId },
             { orderSummary },
-            { returnDocument: "after" },
+            { new: true },
         );
 
-        if (!orders) await Orders.create({ orderSummary, orderNumber });
+        if (!orders) await Orders.create({ userId, orderSummary, orderNumber });
 
         res.json({
             success: true,
@@ -29,9 +29,9 @@ ordersRouter.post("/orders", async (req, res) => {
     }
 });
 
-ordersRouter.get("/orders", async (req, res) => {
+ordersRouter.get("/orders/:userId", async (req, res) => {
     try {
-        const orders = await Orders.find().populate({
+        const orders = await Orders.find({ userId: req.params.userId }).populate({
             path: "orderSummary.cartItems.product",
             model: "Products",
         });
@@ -45,9 +45,10 @@ ordersRouter.get("/orders", async (req, res) => {
     }
 });
 
-ordersRouter.get("/orders/:orderNumber", async (req, res) => {
+ordersRouter.get("/orders/:orderNumber/:userId", async (req, res) => {
     try {
-        const order = await Orders.findOne({ orderNumber: req.params.orderNumber });
+        const { orderNumber, userId } = req.params;
+        const order = await Orders.findOne({ orderNumber, userId });
 
         if (!order)
             return res

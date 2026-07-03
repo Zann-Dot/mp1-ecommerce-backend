@@ -1,6 +1,7 @@
 import { model, Schema } from "mongoose";
 
 const ordersSchema = new Schema({
+    userId: { type: String, required: true },
     orderSummary: {
         orderDate: {
             type: Number,
