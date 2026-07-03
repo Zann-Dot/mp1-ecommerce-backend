@@ -7,22 +7,20 @@ import userRouter from "./routes/user/user.route.js";
 import categoryRouter from "./routes/category.route.js";
 import cartRouter from "./routes/cart.route.js";
 import wishListRouter from "./routes/wishlist.route.js";
-import cookieParser from 'cookie-parser';
+import cookieParser from "cookie-parser";
 import ordersRouter from "./routes/order.route.js";
 import paymentRouter from "./routes/paymentSummary.route.js";
 import checkoutRouter from "./routes/checkout.route.js";
-import Products from "./models/products.model.js";
 
 configDotenv();
-connectToDatabase();
 const app = express();
 
 const corsOption = {
-    origin: '*',
-    method: ['GET', 'POST', 'PUT', 'DELETE'],
+    origin: "*",
+    method: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
-    optionSuccessStatus: 200
-}
+    optionSuccessStatus: 200,
+};
 
 app.use(express.json());
 app.use(cors(corsOption));
@@ -39,8 +37,16 @@ const PORT = process.env.PORT || 3000;
 // };
 // seedData();
 
+app.use(async (req, res, next) => {
+    try {
+        await connectToDatabase();
+        next();
+    } catch (error) {
+        res.status(500).json({ error: "Database connection failed" });
+    }
+});
 
-app.use('/api', cartRouter)
+app.use("/api", cartRouter);
 app.use("/api", productRouter);
 app.use("/api", userRouter);
 app.use("/api", categoryRouter);
