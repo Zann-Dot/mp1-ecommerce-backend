@@ -4,12 +4,13 @@ const router = express.Router();
 
 router.get("/category", async (req, res) => {
   try {
-    const category = await Products.distinct("category");
+    const { category } = req.query;
+    const products = await Products.find({ category });
 
-    if (category.length === 0)
-      return res.status(404).json({ error: "category not found" });
+    if (products.length === 0)
+      return res.status(404).json({ error: `Product of ${category} not found` });
 
-    res.json(category);
+    res.json(products);
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
