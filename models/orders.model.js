@@ -7,6 +7,12 @@ const ordersSchema = new Schema({
             type: Number,
             required: true
         },
+        paymentSummary: {
+            subTotal: Number,
+            shippingCharge: Number,
+            taxCharge: Number,
+            netTotal: Number,
+        },
         cartItems: [
             {
                 product: {
