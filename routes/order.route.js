@@ -48,7 +48,7 @@ ordersRouter.get("/orders/:userId", async (req, res) => {
 ordersRouter.get("/orders/:orderNumber/:userId", async (req, res) => {
     try {
         const { orderNumber, userId } = req.params;
-        const order = await Orders.findOne({ orderNumber, userId });
+        const order = await Orders.findOne({ orderNumber: Number(orderNumber), userId });
 
         if (!order)
             return res
