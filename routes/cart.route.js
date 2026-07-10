@@ -66,6 +66,35 @@ router.post('/cart', async (req, res) => {
     }
 })
 
+router.put('/cart', async (req, res) => {
+    try {
+        const { userId, product, size } = req.body;
+        let cartItem = await Cart.findOne({ product });
+        const user = await Users.findById(userId);
+
+        if (!user)
+            return res.status(404).json({ message: 'User not found' });
+
+        if (cartItem) {
+            cartItem = await Cart.findOneAndUpdate(
+                { product },
+                { $inc: { quantity: 1 } },
+                { returnDocument: "after" }
+            );
+        } else {
+            cartItem = await Cart.create({ userId, product, quantity: 1, size });
+        }
+
+        res.status(200).json({
+            success: true,
+            message: 'Cart item updated successfully',
+            updatedCartItem: cartItem
+        });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+})
+
 router.delete("/cart/:productId", async (req, res) => {
     const product = req.params.productId;
     const deletedCartItem = await Cart.findOneAndDelete({ product });
